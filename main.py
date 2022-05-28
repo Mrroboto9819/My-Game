@@ -2,6 +2,7 @@ import sys
 import pygame, sys
 from settings import *
 from debug import debug
+from level import Level
 
 class Game:
     def __init__(self):
@@ -9,7 +10,7 @@ class Game:
         self.screen = pygame.display.set_mode((WIDTH, HEIGTH))
         pygame.display.set_caption('RPG Test')
         self.clock = pygame.time.Clock()
-
+        self.level = Level()
 
     def run(self):
         while True:
@@ -19,7 +20,8 @@ class Game:
                     sys.exit()
                     
             self.screen.fill('black')
-            debug('hello :)')
+            debug('FPS: ' + str(FPS))
+            self.level.run()
             pygame.display.update()
             self.clock.tick(FPS)
 
